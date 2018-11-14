@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "API Response";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+@{ List<string> res = (List<string>)ViewData["Values"];}
+@foreach(string value in res)
+{
+<h5>@value</h5>
+}
+
