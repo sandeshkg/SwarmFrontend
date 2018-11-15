@@ -9,8 +9,10 @@ services:
     deploy:
       replicas: 2
     depends_on: 
-      - backend
-  backend:
+      - backend.api
+    environment: 
+      - BackendUrl=http://backend.api
+  backend.api:
     image: backendapi:latest
     ports:
       - "8080:80"

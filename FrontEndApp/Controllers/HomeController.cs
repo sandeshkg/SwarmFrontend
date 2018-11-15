@@ -10,11 +10,17 @@ using System.Net.Sockets;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using Newtonsoft.Json;
+using Microsoft.Extensions.Configuration;
 
 namespace FrontEndApp.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IConfiguration _configuration;
+        public HomeController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
         public IActionResult Index()
         {
             return View();
@@ -73,7 +79,7 @@ namespace FrontEndApp.Controllers
         public async Task<List<string>> GetAPIResponseAsync()
         {
             //Hosted web API REST Service base url  
-            string Baseurl = "http://localhost:50536/";
+            string Baseurl = _configuration.GetValue<string>("BackendUrl");
 
             List<string> result = new List<string>();
 

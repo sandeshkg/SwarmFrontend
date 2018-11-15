@@ -19,6 +19,7 @@ namespace FrontEndApp
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration(ic => ic.AddEnvironmentVariables())
                 .UseStartup<Startup>();
     }
 }
