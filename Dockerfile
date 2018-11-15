@@ -3,16 +3,16 @@ WORKDIR /app
 
 # copy csproj and restore as distinct layers
 COPY *.sln .
-COPY FrontEndAPP/*.csproj ./FrontEndAPP/
+COPY FrontEndApp/*.csproj ./FrontEndApp/
 RUN dotnet restore
 
 # copy everything else and build app
-COPY FrontEndAPP/. ./FrontEndAPP/
-WORKDIR /app/FrontEndAPP
+COPY FrontEndApp/. ./FrontEndApp/
+WORKDIR /app/FrontEndApp
 RUN dotnet publish -c Release -o out
 
 
 FROM microsoft/dotnet:2.1-aspnetcore-runtime AS runtime
 WORKDIR /app
-COPY --from=build /app/FrontEndAPP/out ./
-ENTRYPOINT ["dotnet", "FrontEndAPP.dll"]
+COPY --from=build /app/FrontEndApp/out ./
+ENTRYPOINT ["dotnet", "FrontEndApp.dll"]
