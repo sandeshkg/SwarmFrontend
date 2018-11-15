@@ -14,8 +14,6 @@ services:
       - BackendUrl=http://backend
   backend:
     image: backendapi:latest
-    ports:
-      - "8080:80"
     networks:
       - frontend
     deploy:
