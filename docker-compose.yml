@@ -3,7 +3,7 @@ services:
   frontend:
     image: frontendapp:latest
     ports: 
-      - "127.0.0.1:8001:80"
+      - "8001:80"
     networks: 
       - frontend
     deploy:
@@ -20,3 +20,4 @@ services:
       replicas: 2
 networks: 
   frontend:
+    driver: overlay
