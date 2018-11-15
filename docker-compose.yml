@@ -3,7 +3,7 @@ services:
   frontend:
     image: frontendapp:latest
     ports: 
-      - "8001:80"
+      - "8081:80"
     networks: 
       - frontend
     deploy:
@@ -13,7 +13,7 @@ services:
   backend:
     image: backendapi:latest
     ports:
-      - "8000:80"
+      - "8080:80"
     networks:
       - frontend
     deploy:
